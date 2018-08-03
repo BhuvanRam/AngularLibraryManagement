@@ -1,0 +1,9 @@
+<div class="form-group">
+    <label class="control-label col-sm-2" for="state">State:</label>
+    <div class="col-sm-10">
+      <select class="form-control" id="state" placeholder="Select State" (change)='stateChanged($event)' [disabled]='stateData == null'>     
+          <option value="" disabled selected>Select your state</option>
+        <option *ngFor="let state of stateData" [value]='state.stateid'>{{state.statename}}</option>
+      </select>
+    </div>
+  </div>

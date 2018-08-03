@@ -1,0 +1,9 @@
+<div class="form-group">
+  <label class="control-label col-sm-2" for="country">Country:</label>
+  <div class="col-sm-10">
+    <select class="form-control" id="country"  [(ngModel)] ='selectedCountry' placeholder="Select Country" (change)='changeCountry($event)'>      
+      <option value="" disabled selected>Select your country</option>
+       <option   *ngFor="let country of countryData" [value]='country.countryid'>{{country.country}}</option>
+    </select>
+  </div>
+</div>

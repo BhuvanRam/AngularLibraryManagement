@@ -1,0 +1,9 @@
+<div class="form-group">
+    <label class="control-label col-sm-2" for="city">city:</label>
+    <div class="col-sm-10">
+      <select class="form-control" id="city" placeholder="Select City" [disabled]='cityData == null'>    
+          <option value="" disabled selected>Select your city</option>
+        <option *ngFor="let city of cityData" [value]='city.cityid'>{{city.cityname}}</option>
+      </select>
+    </div>
+  </div>

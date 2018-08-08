@@ -7,6 +7,10 @@ import { RegisterComponent } from './register/register.component';
 import { CountryComponent } from './country/country.component';
 import { StateComponent } from './state/state.component';
 import { CityComponent } from './city/city.component';
+import { LearningComponent } from './learning/learning.component';
+import { HighlighterDirective } from './directives/highlighter.directive';
+import { ContentmanagerComponent } from './contentmanager/contentmanager.component';
+import { AdRotatorComponent } from './contentmanager/ad-rotator/ad-rotator.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +19,11 @@ import { CityComponent } from './city/city.component';
     RegisterComponent,
     CountryComponent,
     StateComponent,
-    CityComponent    
+    CityComponent,
+    LearningComponent,
+    HighlighterDirective,
+    ContentmanagerComponent,
+    AdRotatorComponent     
   ],
   imports: [
     BrowserModule,

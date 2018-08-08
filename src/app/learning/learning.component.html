@@ -1,0 +1,146 @@
+<ul class="nav nav-tabs">
+  <li class="active">
+    <a data-toggle="tab" href="#home">Element References</a>
+  </li>
+  <li>
+    <a data-toggle="tab" href="#menu1">Directives</a>
+  </li>
+  <li>
+    <a data-toggle="tab" href="#menu2">Component Life Cycle</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div id="home" class="tab-pane fade in active">
+    <div class="form-group">
+      <p>How do we access the Html control in .ts file ?</p>
+      <label class="control-label col-sm-2">HtmlInputElement</label>
+      <ul>
+        <li>
+          <p>
+            &lt;input type='text' name='username' #username /&gt;
+            <br/> Passing value to the ts file in any event
+            <br/> &lt;input type='submit' value='submit' (click) = 'onSubmit(username)'/&gt;
+          </p>
+          <p>
+            In Typescript to access the element in a function
+            <br/> onSubmit(
+            <b>inputControl:HtmlInputElement</b>)
+          </p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="username">Username:</label>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" id="username" placeholder="Enter Username" #username>
+      </div>
+      <br/>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-default" (click)='submitRegistration(username)'>Submit</button>
+        </div>
+      </div>
+      <div class="form-group" *ngIf='control'>
+        Html Input Element Value , After Click
+        <b> {{this.control.value}} </b>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2">ViewChild</label>
+      <ul>
+        <li>
+          <p>
+            &lt;input type='text' name='username' #username /&gt;
+            <br/> Hooking the control in ts file
+            <br/> Declare a variable as
+            <b>@ViewChild('username')</b> username:ElementRef
+          </p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="newusername">New Username:</label>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" id="newusername" placeholder="Enter Username" #newusername>
+      </div>
+      <br/>
+
+      <div class="form-group" *ngIf='newusername'>
+
+        Html Input Element Value ,
+        <b> {{this.newusername.value}} </b>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-default" (click)='submitRegistrationViewChild()'>Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="menu1" class="tab-pane fade">
+    <div class="form-group">
+      <label class="control-label col-sm-2">Directives</label>
+      <br/> There are 2 types of directives
+      <ul>
+        <li>
+          <b>Structural Directives</b>
+          <br/>
+          <p> *ngIf , *ngFor </p>
+
+        </li>
+        <li>
+          <b>Non Structural Directives</b>
+          <br/>
+          <p> ngStyle , ngClass
+            <br/> sample syntax of [ngStyle] = "&#123; 'background-color
+            <b> [style property] </b> : condition (selectedBookElement === 'B001' ? 'green':'yellow' ) ' &#125;"
+          </p>
+          <div>
+            <select name='book' [(ngModel)]='selectedBookElement'>
+              <option value='B001'>Book 1 - Green</option>
+              <option value='B002'>Book 2 - Yellow</option>
+              <option value='B003'>Book 3 - Red</option>
+            </select>
+            <br/>
+            <p *ngIf='selectedBookElement' [ngStyle]="{ 'background-color': selectedBookElement === 'B001' ? 'green' : selectedBookElement === 'B002' ? 'yellow': 'red'}">
+              A written or printed work consisting of pages glued or sewn together along one side and bound in covers.
+            </p>
+
+
+          </div>
+        </li>
+        <li> Custom Directives
+          <br/>
+          <p *ngIf='selectedBookElement' appHighlighter [bookCode]='selectedBookElement'>
+            <b>With a custom directive</b>A written or printed work consisting of pages glued or sewn together along one side
+            and bound in covers.
+          </p>
+
+          <ul>
+            <li>To Create a custom directive in specific folder the command is
+              <b> ng g d /path (/directives/highlighter) </b>
+            </li>
+            <li> Inject ElementRef, Renderer2 in constructor </li>
+            <li> in ngOnChanges (Whenever any property changes in component the ngOnChanges Fires) assign the property as
+              <b>this.rendered.setStyle(this.eleRef.nativeElement,'color',value) </b>
+            </li>
+            <li>We need to treat directive just like a component (we can pass input to directive), but directive doresnt need
+              HTML files</li>
+          </ul>
+
+
+
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div id="menu2" class="tab-pane fade">
+      Menu 2 implementation
+  </div>
+</div>

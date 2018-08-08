@@ -28,8 +28,14 @@ export class RegisterComponent implements OnInit {
 
   }
 
+  submitRegistration()
+  {
+    
+  }
+
   countryChanged(countryid) {    
     this.selectedCountryId = countryid;
+    
     this.stateData = [
       { 'countryid': 1, 'stateid': 1, 'statename': 'Telangana' },
       { 'countryid': 1, 'stateid': 2, 'statename': 'Andhra Pradesh' },
